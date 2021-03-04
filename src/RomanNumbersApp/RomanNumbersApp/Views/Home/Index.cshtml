@@ -1,0 +1,43 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="container py-5">
+    <!-- For demo purpose -->
+    <div class="row mb-4">
+        <div class="col-lg-8 mx-auto text-center">
+            <h1 class="display-4">Bootstrap Payment Forms</h1>
+        </div>
+    </div> <!-- End -->
+    <div class="row">
+        <div class="col-lg-6 mx-auto">
+            <div class="card ">
+                <div class="card-header">
+                    <!-- Credit card form content -->
+                    <div class="tab-content">
+                        <!-- credit card info-->
+                        <div id="credit-card" class="tab-pane fade show active pt-3">
+                            <form role="form">
+                                <div class="form-group">
+                                    <label for="username">
+                                        <h6>Roman Number:</h6>
+                                    </label>
+                                    <input type="text" name="username" placeholder="For example: I, IV, etc." class="form-control text-uppercase" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="cardNumber">
+                                        <h6>Conversion:</h6>
+                                    </label>
+                                    <div class="input-group">
+                                        <input type="text" name="cardNumber" placeholder="Valid card number" class="form-control " required>
+                                    </div>
+                                </div>
+                                @*<div class="card-footer"> <button type="button" class="subscribe btn btn-primary btn-block shadow-sm"> Confirm Payment </button>*@
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
