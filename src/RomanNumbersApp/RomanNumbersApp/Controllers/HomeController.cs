@@ -23,6 +23,13 @@ namespace RomanNumbersApp.Controllers
             return View();
         }
 
+        [HttpPost]
+        public IActionResult RomanToInteger([FromBody] RomanNumber romanNumber)
+        {
+            int number = int.TryParse(romanNumber.Number, out int result) ? result : 0;
+            return Ok(number + 1);
+        }
+
         public IActionResult Privacy()
         {
             return View();
