@@ -1,11 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using RomanHelper.Extension;
 using RomanNumbersApp.Models;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace RomanNumbersApp.Controllers
 {
@@ -26,19 +22,14 @@ namespace RomanNumbersApp.Controllers
         [HttpPost]
         public IActionResult RomanToInteger([FromBody] RomanNumber romanNumber)
         {
-            int number = int.TryParse(romanNumber.Number, out int result) ? result : 0;
+            //int number = int.TryParse(romanNumber.Number, out int result) ? result : 0;
+            int number = romanNumber.Number.ConvertToInteger();
             return Ok(number + 1);
         }
 
         public IActionResult Privacy()
         {
             return View();
-        }
-
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
     }
 }

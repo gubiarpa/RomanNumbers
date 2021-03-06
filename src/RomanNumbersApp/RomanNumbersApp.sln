@@ -3,7 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30804.86
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RomanNumbersApp", "RomanNumbersApp\RomanNumbersApp.csproj", "{86E1A531-1E04-4447-811E-38F64735B071}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RomanNumbersApp", "RomanNumbersApp\RomanNumbersApp.csproj", "{86E1A531-1E04-4447-811E-38F64735B071}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Dependencies", "Dependencies", "{28875202-707E-4AF8-BF92-22FAA809BF04}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RomanHelper", "RomanHelper\RomanHelper.csproj", "{6804C2A2-9603-42C5-9318-33AC11130380}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RomanNumber_Test", "RomanNumber_Test\RomanNumber_Test.csproj", "{0F991DB6-76E5-455E-A3FD-62256EF69DF2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,9 +21,21 @@ Global
 		{86E1A531-1E04-4447-811E-38F64735B071}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{86E1A531-1E04-4447-811E-38F64735B071}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{86E1A531-1E04-4447-811E-38F64735B071}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6804C2A2-9603-42C5-9318-33AC11130380}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6804C2A2-9603-42C5-9318-33AC11130380}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6804C2A2-9603-42C5-9318-33AC11130380}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6804C2A2-9603-42C5-9318-33AC11130380}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0F991DB6-76E5-455E-A3FD-62256EF69DF2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0F991DB6-76E5-455E-A3FD-62256EF69DF2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0F991DB6-76E5-455E-A3FD-62256EF69DF2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0F991DB6-76E5-455E-A3FD-62256EF69DF2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{6804C2A2-9603-42C5-9318-33AC11130380} = {28875202-707E-4AF8-BF92-22FAA809BF04}
+		{0F991DB6-76E5-455E-A3FD-62256EF69DF2} = {28875202-707E-4AF8-BF92-22FAA809BF04}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {B4FA372C-D30F-44BC-9D39-AB8607F87B99}
