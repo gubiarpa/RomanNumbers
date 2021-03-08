@@ -117,7 +117,7 @@ namespace RomanHelper.Extension
         private static int GetBoundLimit(int number)
         {
             int power = 1;
-            while (power * 10 < number) power *= 10;
+            while (power * 10 <= number) power *= 10;
             return power;
         }
 
