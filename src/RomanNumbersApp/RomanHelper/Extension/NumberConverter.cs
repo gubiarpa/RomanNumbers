@@ -63,6 +63,23 @@ namespace RomanHelper.Extension
         }
 
         /// <summary>
+        /// Returns a list of Roman-Arabic main numbers
+        /// </summary>
+        /// <returns>List of Roman-Arabic main numbers</returns>
+        private static IList<RomanElem> ErrorRepeatList()
+        {
+            return new List<RomanElem> {
+                new RomanElem { Roman = "IIII"  , Arabic = 0    , Rest = string.Empty },
+                new RomanElem { Roman = "VV"    , Arabic = 0    , Rest = string.Empty },
+                new RomanElem { Roman = "XXXX"  , Arabic = 0    , Rest = string.Empty },
+                new RomanElem { Roman = "LL"    , Arabic = 0    , Rest = string.Empty },
+                new RomanElem { Roman = "CCCC"  , Arabic = 0    , Rest = string.Empty },
+                new RomanElem { Roman = "DD"    , Arabic = 0    , Rest = string.Empty },
+                new RomanElem { Roman = "MMMM"  , Arabic = 0    , Rest = string.Empty }
+            };
+        }
+
+        /// <summary>
         /// Matches the roman number to an item in the Main Roman List.
         /// For example: GetArabicNumber("DCCC") = { Roman = "DCCC" , Arabic = 800, Rest = string.Empty }
         /// </summary>
@@ -79,6 +96,29 @@ namespace RomanHelper.Extension
                 }
             }
             return null;
+        }
+
+        private static bool HasRepetions(string romanNumber)
+        {
+            var _errorRepeatList = ErrorRepeatList();
+            foreach (var elem in _errorRepeatList)
+                if (romanNumber.Contains(elem.Roman))
+                    return true;
+
+            return false;
+        }
+
+        /// <summary>
+        /// Returns 10-base bound limit.
+        /// For example. f(2560)=1000, f(378)=100, f(23)=10, f(98)=10, f(6)=1
+        /// </summary>
+        /// <param name="number">Any number</param>
+        /// <returns></returns>
+        private static int GetBoundLimit(int number)
+        {
+            int power = 1;
+            while (power * 10 < number) power *= 10;
+            return power;
         }
 
         /// <summary>
@@ -115,17 +155,21 @@ namespace RomanHelper.Extension
         /// <returns></returns>
         private static int RomanToArabic(string romanNumber)
         {
+            // Validation 1: Has repetitions?
+            if (HasRepetions(romanNumber)) return 0;
+
             var _numbers = new List<RomanElem>();
             var _rest = romanNumber; // It always be the remaining roman number (ej. 'MDXII')
             var _sum = 0;
+
             while (_rest != string.Empty)
             {
                 // Get Match from left
                 var _getLeftMatch = GetLeftMatch(_rest); // getLeftMatch('MDXII') = { roman: 'M', arabic: 1000, rest: 'DXII' }
 
-                // Validation
+                // Validation 2: post-conversion
                 if (_getLeftMatch == null) return 0;
-                if (_numbers.Count > 0 && _getLeftMatch.Arabic > _numbers.Min(x => x.Arabic)) return 0;
+                if (_numbers.Count > 0 && _getLeftMatch.Arabic > GetBoundLimit(_numbers.Min(x => x.Arabic))) return 0;
 
                 // Adds the match
                 _numbers.Add(_getLeftMatch);
