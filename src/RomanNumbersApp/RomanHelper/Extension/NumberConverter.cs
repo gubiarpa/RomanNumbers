@@ -115,16 +115,24 @@ namespace RomanHelper.Extension
         /// <returns></returns>
         private static int RomanToArabic(string romanNumber)
         {
-            var _rest = romanNumber; // siempre será el número romano restante (ej. 'MDXII')
+            var _numbers = new List<RomanElem>();
+            var _rest = romanNumber; // It always be the remaining roman number (ej. 'MDXII')
             var _sum = 0;
             while (_rest != string.Empty)
             {
+                // Get Match from left
                 var _getLeftMatch = GetLeftMatch(_rest); // getLeftMatch('MDXII') = { roman: 'M', arabic: 1000, rest: 'DXII' }
+
+                // Validation
                 if (_getLeftMatch == null) return 0;
+                if (_numbers.Count > 0 && _getLeftMatch.Arabic > _numbers.Min(x => x.Arabic)) return 0;
+
+                // Adds the match
+                _numbers.Add(_getLeftMatch);
                 _sum += _getLeftMatch.Arabic; // _sum = 0 + 1000
                 _rest = _getLeftMatch.Rest; // _rest = 'DXII'
             }
-            return _sum;
+            return _numbers.Sum(x => x.Arabic);
         }
         #endregion
     }
