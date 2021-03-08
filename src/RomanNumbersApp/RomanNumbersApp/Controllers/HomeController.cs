@@ -24,7 +24,7 @@ namespace RomanNumbersApp.Controllers
         {
             //int number = int.TryParse(romanNumber.Number, out int result) ? result : 0;
             int number = romanNumber.Number.ConvertToInteger();
-            return Ok(number + 1);
+            return Ok(number);
         }
 
         public IActionResult Privacy()

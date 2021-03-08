@@ -10,8 +10,8 @@ namespace RomanHelper.Extension
     {
         public static int ConvertToInteger(this string romanNumber)
         {
-            var romanLetters = romanNumber.ToUpper().ToCharArray().ToList();
-            return 15;
+            var romanLetters = RomanToArabic(romanNumber.ToUpper());
+            return romanLetters;
         }
 
         #region RomanAlgorithm
@@ -91,7 +91,7 @@ namespace RomanHelper.Extension
         /// <returns></returns>
         private static RomanElem GetLeftMatch(string romanNumber)
         {
-            for (var index = MainRomanList().Count; index > 0; index--)
+            for (var index = romanNumber.Length; index > 0; index--)
             {
                 var romanSubStr = romanNumber.Substring(0, index);
 
@@ -106,6 +106,24 @@ namespace RomanHelper.Extension
                 }
             }
             return null;
+        }
+
+        /*
+            Input: un número romano
+            Output: Su equivalente en número arábigo
+        */
+        private static int RomanToArabic(string romanNumber)
+        {
+            var _rest = romanNumber; // siempre será el número romano restante (ej. 'MDXII')
+            var _sum = 0;
+            while (_rest != string.Empty)
+            {
+                var _getLeftMatch = GetLeftMatch(_rest); // getLeftMatch('MDXII') = { roman: 'M', arabic: 1000, rest: 'DXII' }
+                if (_getLeftMatch == null) return 0;
+                _sum += _getLeftMatch.Arabic; // _sum = 0 + 1000
+                _rest = _getLeftMatch.Rest; // _rest = 'DXII'
+            }
+            return _sum;
         }
         #endregion
     }
