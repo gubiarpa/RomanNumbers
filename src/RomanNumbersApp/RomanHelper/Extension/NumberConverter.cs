@@ -108,10 +108,11 @@ namespace RomanHelper.Extension
             return null;
         }
 
-        /*
-            Input: un número romano
-            Output: Su equivalente en número arábigo
-        */
+        /// <summary>
+        /// Returns the equivalent arabic number
+        /// </summary>
+        /// <param name="romanNumber">A number in roman format</param>
+        /// <returns></returns>
         private static int RomanToArabic(string romanNumber)
         {
             var _rest = romanNumber; // siempre será el número romano restante (ej. 'MDXII')
